@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  
+  <title>Frontend Mentor | FAQ Accordion Card</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap" rel="stylesheet"> 
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Kumbh', 'sans-serif';
+        font-size: 0.75rem;
+      }
+      body {
+        background-image: linear-gradient(to bottom, hsl(273, 75%, 66%),hsl(240, 73%, 36%));
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .card {
+        background-color: whitesmoke;
+        width: 60vw;
+        height: 80vh;
+        height: 70vh;
+        border-radius: 10px;
+        display: flex;
+      }
+      .section {
+        width: 50vw;
+      }
+      .aside {
+        width: 50vw;
+      }
+      .imagem {
+        position:relative;
+        align-items: center;
+        margin-top: 100px;
+      }
+      .section img:first-child{
+        position: absolute;
+        width:472px; 
+        height:359px;
+        left: -80px;
+
+        
+       
+      }
+      .section img:nth-child(2){
+        position: absolute;
+        width:472px; 
+        height:359px;
+        top: 80px;
+        left: -100px;
+      }
+      .section img:last-child{
+        position: absolute;
+        width:191px; 
+        height:184px;
+        top: 110px;
+        left: -90px;
+      }
+      h1{
+        margin: 100px 0 35px 0px;
+        font-size: 30px;
+        font-weight: 400;
+        
+      }
+      h3 {
+        font-size: 12px;
+      }
+      p{
+        margin-top: 15px;
+        max-width: 75%;
+        font-weight: 400;
+        color: rgba(0,0,0,0.5);
+        font-size: 10px;
+      }
+      .faq {
+        overflow: hidden;
+        transition: 0.3 ease;
+        position: relative;
+      }
+      .faq.active h3{
+        font-weight: bold;
+      }
+      h3 {
+        font-weight: normal;
+      }
+      .faq-text {
+        display: none;
+      }
+      .faq.active .faq-text {
+        display: block;
+      }
+      button {
+        border: none;
+        width: 15px;
+        cursor: pointer;
+        position: absolute;
+        top: 0;
+        right: 90px;
+      }
+      .faq.active button{
+        transform: rotateX(180deg);
+      }
+      hr {
+        color: rgba(0,0,0,0.07);
+        margin-top: 25px;
+        margin-bottom: 25px;
+        width: 82%;
+      }
+      @media(max-width: 1200px){
+        .card{
+          display: block;
+          justify-content: center;
+          height: auto;
+        }
+        .section {
+        display: block;
+        width: 100%;
+        }
+        .aside {
+        justify-content: center;
+        width: 100%;
+        height: auto;
+        margin: 20px;
+      }
+      h1 {
+        text-align: center;
+      }
+      .imagem {
+        position:relative;
+        margin: 0 auto;
+        padding: 0;
+        justify-content: center;
+
+      }
+      .section img:first-child{
+        position: absolute;
+        left: 35%;
+        top: -82px;
+        width:240px; 
+        height:140px;
+      }
+      .section img:nth-child(2){
+        position: absolute;
+        left: 35%;
+        top: -50px;
+        width:240px; 
+        height:140px;
+      }
+      .section img:last-child{
+        position: absolute;
+        width:calc(180px/2); 
+        height:calc(179px/2);
+        top: -40px;
+        left: 35%;
+      
+      }
+      }
+      @media(max-width: 900px){
+      .section img:first-child{
+        left: 30%;
+      }
+      .section img:nth-child(2){
+        left: 30%;
+      }
+      .section img:last-child{
+        left: 30%;
+      }
+      }
+      @media(max-width: 700px){
+      .section img:first-child{
+        left: 25%;
+      }
+      .section img:nth-child(2){
+        left: 25%;
+        
+      }
+      .section img:last-child{
+        left: 25%;
+      }
+      }
+      @media(max-width: 600px){
+      .card {
+        width: 95vw;
+        height: auto;
+      }
+      .section img:first-child{
+        left: 30%;
+      }
+      .section img:nth-child(2){
+        left: 30%;
+        
+      }
+      .section img:last-child{
+        left: 30%;
+      }
+      button {
+        right: 40px;
+      }
+      }
+      @media(max-width: 400px){
+      .card {
+        width: 95vw;
+        height: auto;
+      }
+      h1 {
+        margin-right: 50px;
+      }
+      .section img:first-child{
+        left: 18%;
+      }
+      .section img:nth-child(2){
+        left: 18%;
+        
+      }
+      .section img:last-child{
+        left: 18%;
+      }
+      }
+      @media(max-width: 350px){
+      h1 {
+        margin-right: 50px;
+      }
+      .section img:first-child{
+        left: 15%;
+      }
+      .section img:nth-child(2){
+        left: 15%;
+        
+      }
+      .section img:last-child{
+        left: 15%;
+      }
+      }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="section">
+      <div class="imagem">
+      <img src="./images/illustration-woman-online-desktop.svg" alt="">
+      <img src="./images/bg-pattern-desktop.svg" alt="">
+      <img src="./images/illustration-box-desktop.svg" alt="" srcset="">
+    </div>
+    </div>
+    <div class="aside">
+    <h1>FAQ</h1>
+    <div class="faq-container">
+      
+     <div class="faq">
+       <h3 class="faq-title">
+     How many team members can I invite?</h3>
+     <p class="faq-text">You can invite up to 2 additional users on the Free plan. There is no limit on 
+    team members for the Premium plan.</p>
+    <button class="faq-toggle">
+      <img src="./images/icon-arrow-down.svg" alt=""></button> </div>
+      <hr>
+      <div class="faq active">
+        <h3 class="faq-title">
+      What is the maximum file upload size?</h3>
+      <p class="faq-text">No more than 2GB. All files in your account must fit your allotted storage space.</p>
+      <button class="faq-toggle">
+        <img src="./images/icon-arrow-down.svg" alt=""></button> 
+</div>
+<hr>
+  <div class="faq">
+    <h3 class="faq-title">
+  How do I reset my password?</h3>
+     
+  <p class="faq-text"> Click “Forgot password” from the login page or “Change password” from your profile page.
+    A reset link will be emailed to you.</p>
+    <button class="faq-toggle">
+      <img src="./images/icon-arrow-down.svg" alt=""></button> 
+  </div>
+  <hr>
+    <div class="faq">
+      <h3 class="faq-title">
+    Can I cancel my subscription?</h3>
+    <p class="faq-text">Yes! Send us a message and we’ll process your request no questions asked.</p>
+           <button class="faq-toggle">
+<img src="./images/icon-arrow-down.svg" alt=""></button> 
+</div>
+<hr>
+<div class="faq">
+  <h3 class="faq-title">
+  Do you provide additional support?</h3>
+  <p class="faq-text">Chat and email support is available 24/7. Phone lines are open during normal business hours.</p>
+  
+  <button class="faq-toggle">
+  <img src="./images/icon-arrow-down.svg" alt=""></button> 
+</div>
+    </div>  
+  </div>
+  
+  
+  
+  
+  <script>
+    const toggles = document.querySelectorAll('.faq-toggle')
+
+toggles.forEach(toggle => {
+    toggle.addEventListener('click', () => {
+        toggle.parentNode.classList.toggle('active')
+    })
+})
+  </script>
+  <!-- <div class="faq">
+        <h3 class="faq-title">
+            What is: 1 + 1?
+        </h3>
+        <p class="faq-text">
+            Depends on who are you asking.
+        
+        <button class="faq-toggle">
+            <i class="fas fa-chevron-down"></i>
+            <i class="fas fa-times"></i>
+        </button>
+    </div> -->
+</body>
+</html>
